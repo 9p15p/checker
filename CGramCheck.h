@@ -66,7 +66,10 @@ int CGramCheck::getNumberOfEdges(string str_list) {
 void CGramCheck::matchBrackets() {
 }
 void CGramCheck::matchSemicolon() {
+    for(int i=0;i<num_line;i++){
+        cout << "hello" << endl;
 
+    }
 }
 
 #endif //CHECKER_CGRAMCHECK_H
