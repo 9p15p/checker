@@ -20,16 +20,33 @@ class CGramCheck {
 private:
     ifstream inFile;
     int num_line = 0;
+    string str[1000];
 public:
     bool readFile(string f_name);
-
     int getNumberOfEdges(string str_list);
-
-    void matchBrackets(string str_list);
-    void matchSemicolon(string str_list);
+    void matchBrackets();
+    void matchSemicolon();
 
 };
 
+bool CGramCheck::readFile(string f_name) {
+    inFile.open(f_name, ios::in);
+    num_line = getNumberOfEdges(f_name);
+//    string str[num_line];
+    if (inFile) {
+        cout << "readFile success!" << endl;
+        int i = 0;
+        while (!inFile.eof()) {
+            getline(inFile, str[i], '\n');
+            i++;
+        }
+        for (int ii = 0; ii < i; ii++) {
+            cout << str[ii] << endl;
+        }
+        inFile.close();
+    } else
+        cout << "readFile fail!No such file!" << endl;
+}
 
 int CGramCheck::getNumberOfEdges(string str_list) {
     char flag;
@@ -46,29 +63,9 @@ int CGramCheck::getNumberOfEdges(string str_list) {
     return edgeNum;
 }
 
-bool CGramCheck::readFile(string f_name) {
-    inFile.open(f_name, ios::in);
-    num_line = getNumberOfEdges(f_name);
-    string str[num_line];
-    if (inFile) {
-        cout << "readFile success!" << endl;
-        int i = 0;
-        while (!inFile.eof()) {
-            getline(inFile, str[i], '\n');
-            i++;
-        }
-        for (int ii = 0; ii < i; ii++) {
-            cout << str[ii] << endl;
-        }
-        inFile.close();
-    } else
-        cout << "readFile fail!No such file!" << endl;
+void CGramCheck::matchBrackets() {
 }
-
-void CGramCheck::matchBrackets(string str_list) {
-
-}
-void CGramCheck::matchSemicolon(string str_list) {
+void CGramCheck::matchSemicolon() {
 
 }
 
