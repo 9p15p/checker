@@ -4,4 +4,3 @@ project(checker)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(checker main.cpp)
-add_executable(Main_chufa Main_chufa.cpp)
