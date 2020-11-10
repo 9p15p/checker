@@ -48,13 +48,13 @@ public:
 
     int getNumberOfEdges(string f_name);//获取行数
 
-    void checkComment();    //检测两种注释方式 // /**/
-    void matchBrackets();   //检测四种括号 ([{<
-    void checkquotation();  //检测两种引号 ' "
-    void matchSemicolon();  //检测分号 ;
-    void checkOperator();   //检测运算符
+    void checkComment();            //检测两种注释方式 // /**/
+    void matchBrackets();           //检测四种括号 ([{<
+    void checkquotation();          //检测两种引号 ' "
+    void matchSemicolon();          //检测分号 ;
+    void checkOperator();           //检测运算符
 
-    void saveFile(string s_name);
+    void saveFile(string s_name);   //保存文件
 
 };
 
