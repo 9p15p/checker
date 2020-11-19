@@ -111,9 +111,13 @@ void CGramCheck::checkComment() {
 
         if(clear_flag)test_oneline[i] = '\0';
 
+        if(last_char=='*' and this_char=='/' and clear_flag==false){ cout << "error, */ can't be start" << endl;error_comment++;}
+
         //如果是 /*
         if(last_char=='/' and this_char=='*'){clear_flag=true;test_oneline[i]='\0';test_oneline[i-1]='\0';}
         if(last_char=='*' and this_char=='/')clear_flag=false;
+
+
 
         last_char = this_char;
     }
@@ -224,8 +228,29 @@ void CGramCheck::matchSemicolon() {
     }
 }
 void CGramCheck::checkOperator() {
-    //todo:词法分析
-    error_operator++;
+    //词法分析:只判断+-
+    string Operator = "+-";
+    string all_num = "0123456789";
+    string all_char = "qwertyuiopasdfghjklzxcvbnm";
+    for(int i=0;i<num_line;i++){
+        string curr_line = str[i];
+        for(int j=0;j<curr_line.size();j++){
+            char curr_char = curr_line[j];
+            char last_char = curr_line[j-1];
+            char next_char = curr_line[j+1];
+            if(Operator.find(curr_char)!=-1){
+                if(
+                        not((isalpha(last_char) or isdigit(last_char))
+                        and
+                        (isalpha(next_char) or isdigit(next_char)))
+                ){
+                    cout << "error, operator's last char or next char must be a num or a letter" << endl;
+                    error_operator++;
+                }
+            }
+
+        }
+    }
 }
 void CGramCheck::saveFile(string s_name) {
     ofstream outFile;
